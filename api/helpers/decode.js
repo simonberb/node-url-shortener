@@ -1,3 +1,6 @@
+const alphabet = '123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ';
+const base = alphabet.length;
+
 function decode(str) {
   let decoded = 0;
   while (str) {
