@@ -1,4 +1,4 @@
-
+const encode = require('../helpers/encode');
 
 function shorten(req, res) {
   if (req.body.url) {
@@ -9,7 +9,7 @@ function shorten(req, res) {
         // Since it doesn't exist, let's go ahead and create it
         url = await Url.create({ longUrl });
       }
-      res.status(201).json({ shortUrl: `${webhost}/${base58.encode(url.id)}` });
+      res.status(201).json({ shortUrl: `${webhost}/${encode.encode(url.id)}` });
     });
   }
 }
