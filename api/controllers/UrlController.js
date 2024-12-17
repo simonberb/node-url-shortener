@@ -1,5 +1,5 @@
 const Url = require('../models/Url');
-const base58 = require('../helpers/base58');
+const service = require('../helpers/UrlService');
 
 const webhost = 'http://localhost:3000';
 
