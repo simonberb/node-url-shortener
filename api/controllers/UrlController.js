@@ -1,6 +1,6 @@
 const Url = require('../models/Url');
-const encode = require('../helpers/encode');
-const decode = require('../helpers/decode
+const encoder = require('../helpers/encode');
+const decoder = require('../helpers/decode
 
 const webhost = 'http://localhost:3000';
 
@@ -12,10 +12,10 @@ function shorten(req, res) {
       if (!url) {
         // Since it doesn't exist, let's go ahead and create it
         url = await Url.create({ longUrl });
-        res.status(200).json({ shortUrl: `${webhost}/${encode.encode(url.id)}` });
+        res.status(200).json({ shortUrl: `${webhost}/${encode.encoder(url.id)}` });
       }
       else {
-        res.status(201).json({ shortUrl: `${webhost}/${encode.encode(url.id)}` });
+        res.status(201).json({ shortUrl: `${webhost}/${encode.encoder(url.id)}` });
       }
     });
   }
@@ -23,7 +23,7 @@ function shorten(req, res) {
 
 function decode(req, res) {
   const base58ID = req.params.encodedId;
-  const id = decode.decode(base58ID);
+  const id = decoder.decode(base58ID);
   // Check if url already exists in the database
   Url.findOne({ where: { id } }).then((url) => {
     if (url) {
