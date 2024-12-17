@@ -12,10 +12,10 @@ function shorten(req, res) {
       if (!url) {
         // Since it doesn't exist, let's go ahead and create it
         url = await Url.create({ longUrl });
-        res.status(200).json({ shortUrl: `${webhost}/${encode.encoder(url.id)}` });
+        res.status(200).json({ shortUrl: `${webhost}/${encoder.encode(url.id)}` });
       }
       else {
-        res.status(201).json({ shortUrl: `${webhost}/${encode.encoder(url.id)}` });
+        res.status(201).json({ shortUrl: `${webhost}/${encoder.encode(url.id)}` });
       }
     });
   }
