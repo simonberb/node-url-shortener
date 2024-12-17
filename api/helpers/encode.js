@@ -10,3 +10,5 @@ function encode(num) {
   }
   return encoded;
 }
+
+module.exports.encode = encode;
